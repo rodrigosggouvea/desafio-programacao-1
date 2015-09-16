@@ -3,7 +3,10 @@ class ImportFile
   def self.import(file)
     file = CSV::read(file.path, { headers: true, col_sep: "\t" })
     items = file.map{ |row| parse(row.to_hash) }
-    items.map{|item| (item.price * item.count)}.sum
+    income = items.map{|item| (item.price * item.count)}.sum
+    sale = Sale.create(income: income)
+    items.each{ |item| item.update(sale: sale) }
+    sale
   end
 
   def self.parse(row)

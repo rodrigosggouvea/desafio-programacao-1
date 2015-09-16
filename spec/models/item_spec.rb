@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  describe "Associations" do
+    it "should belong to purchaser" do
+      expect(build(:item)).to respond_to :purchaser
+    end
+    it "should belong to merchant" do
+      expect(build(:item)).to respond_to :merchant
+    end
+  end
   describe "validations" do
     describe "description" do
       context "should be invalid if" do

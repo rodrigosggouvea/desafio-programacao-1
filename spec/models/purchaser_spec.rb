@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Purchaser, type: :model do
+  describe "Relationships" do
+    it "has many items" do
+      expect(build(:purchaser)).to respond_to :items
+    end
+  end
   describe "validations" do
     describe "name" do
       context "should be invalid if" do

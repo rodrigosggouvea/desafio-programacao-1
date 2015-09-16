@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   describe "Associations" do
+    it "should belong to sale" do
+      expect(build(:item)).to respond_to :sale
+    end
     it "should belong to purchaser" do
       expect(build(:item)).to respond_to :purchaser
     end

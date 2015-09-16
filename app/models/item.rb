@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-
+  belongs_to :sale
   belongs_to :purchaser
   belongs_to :merchant
 

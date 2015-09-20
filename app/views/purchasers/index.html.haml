@@ -1,2 +1,15 @@
-%h1 Purchasers#index
-%p Find me in app/views/purchasers/index.html.haml
+- model_class = Purchaser
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:created_at)
+  %tbody
+    - @purchasers.each do |purchaser|
+      %tr
+        %td= link_to purchaser.id, purchaser_path(purchaser)
+        %td= purchaser.name
+        %td=l purchaser.created_at

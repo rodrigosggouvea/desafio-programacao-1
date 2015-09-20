@@ -1,5 +1,5 @@
 class PurchasersController < ApplicationController
   def index
-    @purchasers = Purchase.all
+    @purchasers = Purchaser.all
   end
 end

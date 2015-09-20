@@ -1,2 +1,17 @@
-%h1 Merchants#index
-%p Find me in app/views/merchants/index.html.haml
+- model_class = Merchant
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:address)
+      %th= model_class.human_attribute_name(:created_at)
+  %tbody
+    - @merchants.each do |merchant|
+      %tr
+        %td= link_to merchant.id, merchant_path(merchant)
+        %td= merchant.name
+        %td= merchant.address
+        %td=l merchant.created_at

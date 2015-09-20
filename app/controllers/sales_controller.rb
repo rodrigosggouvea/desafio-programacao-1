@@ -10,6 +10,7 @@ class SalesController < ApplicationController
   def create
     @sale = ImportFile.import(params[:file])
     if @sale.valid?
+      @sale.save
       redirect_to @sale, notice: "Venda cadastrada!"
     else
       redirect_to :new, error: "Houve um erro. Por favor, tente novamente."
